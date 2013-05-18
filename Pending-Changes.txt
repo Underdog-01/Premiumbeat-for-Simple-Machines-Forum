@@ -1,0 +1,6 @@
+
+Pending changes for Premiumbeat v2.0.1:
+
++ Fix popup to always be on top when popup is already in use (alwaysRaised=yes only working for initial popup)
++ Add options to sort mp3 lists (by default, id or name)
++ mp3 music list url's should show track name when playing in player (not url location)
