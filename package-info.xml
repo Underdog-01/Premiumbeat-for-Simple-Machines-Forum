@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<!DOCTYPE package-info SYSTEM "http://www.simplemachines.org/xml/package-info">
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+	ATTENTION: If you are trying to install this manually, you should try
+	the package manager.  If it will not work for you, please take a look
+	at the following for information on this format:
+		http://mods.simplemachines.org/docs/manual-install.php
+ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+
+<package-info xmlns="http://www.simplemachines.org/xml/package-info" xmlns:smf="http://www.simplemachines.org/">
+	<id>premiumbeat:mp3forsmf</id>
+	<name>Premiumbeat Flash MP3 Player</name>
+	<version>2.0.1</version>
+	<type>modification</type>
+
+	<!-- ############################      SMF2.0X        ############################ -->
+				
+	<install for="2.0 - 2.99.99">
+		<readme parsebbc="true">SMF2/readme_SMF2.txt</readme>			
+		<require-dir name="my_music" destination="$boarddir" />
+		<require-dir name="mp3_music" error="skip" destination="$boarddir" />
+		<require-file name="SMF2/CustomMusic.php" destination="$sourcedir" />
+		<require-file name="SMF2/CustomMusicPlaylist.php" destination="$sourcedir" />
+		<require-file name="SMF2/CustomMusicSettings.php" destination="$sourcedir" />
+		<require-file name="SMF2/CustomMusicHooks.php" destination="$sourcedir" />
+		<require-file name="SMF2/CustomMusicZip.php" destination="$sourcedir" />
+		<require-file name="SMF2/CustomMusic.template.php" destination="$boarddir/Themes/default" />
+		<require-file name="SMF2/CustomMusicEdit.template.php" destination="$boarddir/Themes/default" />
+		<require-file name="SMF2/CustomMusicUpload.template.php" destination="$boarddir/Themes/default" />	
+		<require-file name="SMF2/CustomMusicPlaylist.template.php" destination="$boarddir/Themes/default" />
+		<require-file name="SMF2/CustomMusicPlaylistQuery.template.php" destination="$boarddir/Themes/default" />
+		<require-file name="SMF2/CustomMusicPopup.template.php" destination="$boarddir/Themes/default" />
+		<require-file name="SMF2/CustomMusicSettings.template.php" destination="$boarddir/Themes/default" />		
+		<require-file name="SMF2/CustomMusicForum.template.php" destination="$boarddir/Themes/default" />				
+		<require-file name="SMF2/Premiumbeat.english.php" destination="$boarddir/Themes/default/languages" />
+		<require-file name="SMF2/Premiumbeat.english-utf8.php" destination="$boarddir/Themes/default/languages" />
+		<require-file name="SMF2/premiumbeat_bbc.gif" destination="$imagesdir/bbc" />
+		<require-file name="SMF2/premiumbeat_config.png" destination="$imagesdir/admin" />			
+		<require-file name="SMF2/premiumbeat_settings.png" destination="$imagesdir/admin" />		
+		<code>SMF2/Adv_premiumbeat_mysql.php</code>
+	</install>	
+					
+	<uninstall for="2.0 - 2.99.99">
+		<readme parsebbc="true">SMF2/Adv_uninstall_readme.txt</readme>		
+		<remove-dir name="$boarddir/my_music" />
+		<remove-file name="$sourcedir/CustomMusic.php" />
+		<remove-file name="$sourcedir/CustomMusicPlaylist.php" />
+		<remove-file name="$sourcedir/CustomMusicSettings.php" />
+		<remove-file name="$sourcedir/CustomMusicHooks.php" />
+		<remove-file name="$sourcedir/CustomMusicZip.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusic.template.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusicEdit.template.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusicPlaylist.template.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusicPlaylistQuery.template.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusicPopup.template.php" />
+		<remove-file name="$boarddir/Themes/default/CustomMusicSettings.template.php" />		
+		<remove-file name="$boarddir/Themes/default/CustomMusicForum.template.php" />	
+		<remove-file name="$boarddir/Themes/default/CustomMusicUpload.template.php" />						
+		<remove-file name="$imagesdir/bbc/premiumbeat_bbc.gif" />	
+		<remove-file name="$imagesdir/admin/premiumbeat_config.png" />	
+		<remove-file name="$imagesdir/admin/premiumbeat_settings.png" />		
+		<remove-file name="$languagedir/Premiumbeat.english.php" />
+		<remove-file name="$languagedir/Premiumbeat.english-utf8.php" />		
+		<code>SMF2/Adv_uninstall_hooks.php</code>
+	</uninstall>
+</package-info>

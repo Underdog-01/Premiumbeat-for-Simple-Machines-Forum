@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<title>Askusaquestion.net</title>
+		<style type="text/css">
+			body
+			{
+				background-color: white;
+				color: black;
+				font: small Verdana, sans-serif;
+			}
+			h1
+			{
+				font-size: 18pt;
+				margin: 0;
+			}
+			li
+			{
+				padding-bottom: 2ex;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>We are experiencing technical difficulties.</h1>
+		<br />
+		<a href="http://askusaquestion.net/index.php?action=arcade" target="_blank">CLICK HERE</a> to try the forum again.<br />
+
+		<ul>
+			<li>
+				This website is temporarily experiencing technical difficulties.	
+			</li>
+			
+			<li>
+				Please use the link above to attempt navigation back to the forum.<br />				
+			</li>
+
+			<li>
+				We apologize for any inconvenience.<br />				
+			</li>
+		</ul>
+
+		Thank you.<br />		
+	</body>
+</html>

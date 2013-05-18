@@ -1,0 +1,101 @@
+/* Premiumbeat PHP ~ popup block with multiple playlist dropdown option */
+
+/* Edit your image location or make it false not to display it */
+$image = false;
+// $image = 'http://i272.photobucket.com/albums/jj187/ginger_face/mymusic.gif';
+$width = '450';
+$height = '230';
+$autoplay = 'yes'; 
+$title = 'Select Playlist';
+
+/*
+ *  Set $position to false to have the button appear in the block and set block body style accordingly  
+ *  For $position = false put the following in your body style...  text-align:center;vertical-align:middle;overflow:hidden;
+ */
+ 
+$position = 'fixed';
+
+/* 
+ * Do not edit below this comment
+*/
+
+global $smcFunc, $scripturl, $settings;
+
+$datum = array('myplaylist','title','equip');
+$num = 0;
+$drop = '';
+$_SESSION['premiumbeat_bbc'] = false;
+$_SESSION['customMusic_checker'] = true;
+$_SESSION['premiumbeat_width'] = $width;
+$_SESSION['premiumbeat_height'] = $height;
+$_SESSION['premiumbeat_autoplay'] = $autoplay;
+$_SESSION['premiumbeat_new'] = true;
+
+if ($position == 'fixed')
+	$style = "position:fixed;top:0px;right:2px;";
+else
+	$style="text-align:center;";
+
+$result = $smcFunc['db_query']('', "SELECT myplaylist, title, equip						
+                                    FROM {db_prefix}premiumbeat_settings
+                                    WHERE equip > 0");
+while ($val = $smcFunc['db_fetch_assoc']($result))
+{
+	foreach ($datum as $data)
+		$playlists[$num][$data] = $val[$data];
+	
+	$num++;
+}			
+$smcFunc['db_free_result']($result);
+
+if (empty($playlists))
+	return false;
+
+foreach ($playlists as $playlist)
+	$drop .= '<option value="' . $playlist['myplaylist'] . '">' . $playlist['title'] . '</option>'; 
+
+$playlist = $playlists[0]['myplaylist'];
+$Xurl = 'index.php?action=customMusicPopup;playlist=989;playsong=playlist=';
+$url = $Xurl . $playlist.';';
+
+if (!$image)
+	$icon = false;
+elseif ($position == 'fixed')
+	$icon = '<img src ="'.$image.'" alt="" style="position:relative;height:30px;width:59px;float:right;right:2px;" />';
+else
+	$icon = '<span style="display: block;margin-left: auto;margin-right: auto;"><img src ="'.$image.'" alt="" style="position:relative;height:30px;width:59px;" /></span>';
+    
+echo '
+<script type="text/javascript"><!--
+	var WindowObjectReference = null; 	
+	function PremiumbeatPopup(strURL,strWidth,strHeight)
+	{		
+		var strOptions="";
+		var strType = "console";
+		if (strType=="console") strOptions="resizable,height="+strHeight+",width="+strWidth;
+		if (strType=="fixed") strOptions="status,height="+strHeight+",width="+strWidth;
+		if (strType=="elastic") strOptions="toolbar,menubar,scrollbars,resizable,location,height="+strHeight+",width="+strWidth;
+		WindowObjectReference = window.open(strURL, "newWin", strOptions);
+		WindowObjectReference.focus();
+	}
+//--></script>';
+
+if ($icon)
+	$pop = '<a href="javascript:void(0)" onclick="PremiumbeatPopup(\''.$url.'\',\''.$width.'\',\''.$height.'\')">'.$icon.'</a>';
+else
+	$pop = false;
+
+echo '
+<ul id="someID" style="list-style-type:none;'.$style.'">
+	<li>'
+		, $pop, '<br />
+	</li>
+	<li>
+		<select id="C4" dir="rtl" onchange="PremiumbeatPopup(\''.$Xurl.'\' + this.options[this.selectedIndex].value,\''.$width.'\',\''.$height.'\')">
+			<option disabled=true value="0" title="tooltip" selected=true>
+				',$title,'
+			</option>
+			',$drop,'
+		</select>
+	</li>			
+</ul>';
